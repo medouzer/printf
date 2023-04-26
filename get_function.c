@@ -1,27 +1,41 @@
-#include <stdio.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
- * get_function - is the function to determinate the function
- * to use on _printf
- * @format: the format entred by the user
- * Return: return the value NULL or function to use
+ * get_function - function that chose the function on format
+ * @format: the format to print
+ * @ap: the list of arg to print
+ * @i: containt the addres of the format position
+ * Return: return number
  */
 
-int (*get_function(const char *format))(va_list)
+int get_function(const char *format, va_list ap, int *i)
 {
-	int i = 0;
-	form_f get_f[] = {
-		{"c", print_char},
-		{"s", print_string},
-	};
+	int k = 0;
+	char *str;
 
-	while (get_f[i].ch)
+	switch (*(format + *i + 1))
 	{
-		if (get_f[i].ch[0] == (*format))
-			return (get_f[i].f);
-		i++;
+		case 'c':
+			putchar(va_arg(ap, int));
+			k++;
+			break;
+		case 's':
+			str = va_arg(ap, char *);
+			print_string(str);
+			k++;
+			break;
+		case '%':
+			putchar(format[*i]);
+			k++;
+			break;
+		default:
+			putchar(format[*i]);
+			k++;
+			*i -= 1;
+			break;
 	}
-	return (NULL);
+
+	*i += 1;
+
+	return(k);
 }

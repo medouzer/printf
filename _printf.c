@@ -1,55 +1,38 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
 #include "main.h"
 
 /**
- * _printf - is the function that assest to print any format
- * @format: is the format that we use to print char or string
- * Return: return the number of character printed
+ * _printf - function thats print all thing
+ * @format: is the format of what we print
+ * Return: return the number of character
  */
 
 int _printf(const char *format, ...)
 {
 	int i = 0, count = 0;
-	int (*f)(va_list);
-
 	va_list ap;
+
+	va_start(ap, format);
 
 	if (format == NULL)
 		return (-1);
 
-	va_start(ap, format);
-
-	while (format[i])
+	while (format[i] != '\0')
 	{
-		while (format[i] != '%')
+		if (format[i] == '%')
 		{
-			_putchar(format[i]);
-			count++;
-			i++;
-		}
-
-		if (format[i] == '\0')
-			return (count);
-		f = get_function(&format[i + 1]);
-
-		if (f != NULL)
-		{
-			count = count + f(ap);
-			i += 2;
-			continue;
-		}
-		if (!format[i + 1])
-			return (-1);
-
-		if (format[i + 1] == '%')
-		{
-			i = i + 2;
+			if (format[i + 1] == '\0')
+				return (-1);
+			count += get_function(format, ap, &i);
 		}
 		else
-			i++;
+		{
+			putchar(format[i]);
+			count++;
+		}
+		i++;
 	}
+
 	va_end(ap);
+
 	return (count);
 }
