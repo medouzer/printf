@@ -12,7 +12,7 @@ int print_string(va_list ap)
 	char *str;
 	int i = 0;
 
-	str = va_arg(s, char *);
+	str = va_arg(ap, char *);
 	if (str == NULL)
 		str = "(null)";
 

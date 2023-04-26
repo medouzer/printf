@@ -9,12 +9,12 @@
  * Return: return the value NULL or function to use
  */
 
-int get_function(const char *format)(va_list)
+int (*get_function(const char *format))(va_list)
 {
 	int i = 0;
 	form_f get_f[] = {
-		{"c", print_char};
-		{"s", print_string};
+		{"c", print_char},
+		{"s", print_string},
 	};
 
 	while (get_f[i].ch)
