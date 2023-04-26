@@ -51,5 +51,5 @@ int get_function(const char *format, va_list ap, int *i)
 
 	*i += 1;
 
-	return(k);
+	return (k);
 }
