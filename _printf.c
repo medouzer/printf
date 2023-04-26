@@ -4,7 +4,7 @@
 /**
  * _printf - is the function that assest to print any format
  * @format: is the format that we use to print char or string
- * @Return return the number of character printed
+ * Return: return the number of character printed
  */
 
 int _printf(const char *format, ...)
@@ -38,12 +38,11 @@ int _printf(const char *format, ...)
 			i += 2;
 			continue;
 		}
-		if (!format [i + 1])
+		if (!format[i + 1])
 			return (-1);
 
 		if (format[i + 1] == '%')
 		{
-			count += f(ap);
 			i = i + 2;
 		}
 		else

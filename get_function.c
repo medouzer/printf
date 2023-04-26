@@ -14,7 +14,6 @@ int get_function(const char *format)(va_list)
 	form_f get_f[] = {
 		{"c", print_char};
 		{"s", print_string};
-		{"%", print_percent};
 	};
 
 	while (get_f[i].ch)
