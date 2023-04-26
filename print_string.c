@@ -7,7 +7,7 @@
  * Return: return the value 1
  */
 
-int print_string(char *str, int k)
+int print_string(char *str)
 {
 	int len;
 	char *null = "(null)";
@@ -16,7 +16,7 @@ int print_string(char *str, int k)
 		for (len = 0; null[len] != '\0'; len++)
 		{
 			putchar(null[len]);
-			k++;
+			return (1);
 		}
 	}
 	else
@@ -24,9 +24,8 @@ int print_string(char *str, int k)
 		for (len = 0; str[len] != '\0'; len++)
 		{
 			putchar(str[len]);
-			k++;
+			return (1);;
 		}
 	}
-
-	return (1);
+	return (0);
 }

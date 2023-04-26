@@ -21,7 +21,7 @@ int get_function(const char *format, va_list ap, int *i)
 			break;
 		case 's':
 			str = va_arg(ap, char *);
-			print_string(str, k);
+			k = k + print_string(str);
 			break;
 		case '%':
 			putchar(format[*i]);
