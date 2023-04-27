@@ -10,7 +10,7 @@
 
 int get_function(const char *format, va_list ap, int *i)
 {
-	int k = 0, len;
+	int k = 0, len, number;
 	char *str, *null = "(null)";
 
 	switch (*(format + *i + 1))
@@ -41,6 +41,11 @@ int get_function(const char *format, va_list ap, int *i)
 		case '%':
 			putchar(format[*i]);
 			k++;
+			break;
+		case 'd':
+		case 'i':
+			number = va_arg(arg, int);
+			print_num(num, &k);
 			break;
 		default:
 			putchar(format[*i]);
