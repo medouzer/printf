@@ -10,8 +10,8 @@
 
 int get_function(const char *format, va_list ap, int *i)
 {
-	int k = 0;
-	char *str;
+	int k = 0, len = 0;
+	char *str, *null = "(null)";
 
 	switch (*(format + *i + 1))
 	{
@@ -21,7 +21,22 @@ int get_function(const char *format, va_list ap, int *i)
 			break;
 		case 's':
 			str = va_arg(ap, char *);
-			k = k + print_string(str);
+			if (str == NULL)
+			{
+				while (null[len] != '\0')
+				{
+					putchar(null[len]);
+					k++;
+				}
+			}
+			else
+			{
+				while (str[len] != '\0')
+				{
+					putchar(str[len]);
+					k++;
+				}
+			}
 			break;
 		case '%':
 			putchar(format[*i]);
