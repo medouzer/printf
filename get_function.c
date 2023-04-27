@@ -44,8 +44,8 @@ int get_function(const char *format, va_list ap, int *i)
 			break;
 		case 'd':
 		case 'i':
-			number = va_arg(arg, int);
-			print_num(num, &k);
+			number = va_arg(ap, int);
+			print_number(number, &k);
 			break;
 		default:
 			putchar(format[*i]);
