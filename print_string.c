@@ -3,7 +3,7 @@
 /**
  * print_string - function that print a string from _printf
  * @str: the string to print
- * @Return: return the number of string printed
+ * Return: return the number of string printed
  */
 
 int print_string(char *str)
