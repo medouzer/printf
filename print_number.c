@@ -24,7 +24,7 @@ int print_number(int num, int *k)
 	else
 	{
 		putchar(num + '0');
-		*k =+ 1;
+		*k += 1;
 	}
 
 	return (0);
