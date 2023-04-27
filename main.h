@@ -9,5 +9,6 @@
 int _printf(const char *format, ...);
 int get_function(const char *format, va_list ap, int *i);
 int print_number(int num, int *k);
+int print_string(char *str);
 
 #endif
