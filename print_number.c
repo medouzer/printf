@@ -9,7 +9,15 @@
 
 int print_number(int num, int *k)
 {
-	if (num < 0)
+	if (num == -2147483648)
+        {
+                putchar('-');
+                putchar('2');
+                *k = *k + 2;
+                print_number(147483648, k);
+                return (0);
+        }
+	else if (num < 0)
 	{
 		putchar('-');
 		*k = *k + 1;
